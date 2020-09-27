@@ -7,31 +7,23 @@ import (
 	"github.com/kataras/iris/v12"
 )
 
-/**
- * 订单服务接口
- */
+// 订单服务接口
 type OrderService interface {
 	GetCount() (int64, error)
 	GetOrderList(offset, limit int) []model.OrderDetail
 }
 
-/**
- * 订单服务
- */
+// 订单服务
 type orderService struct {
 	Engine *xorm.Engine
 }
 
-/**
- * 实例化OrderService服务对象
- */
+// 实例化OrderService服务对象
 func NewOrderService(db *xorm.Engine) OrderService {
 	return &orderService{Engine: db}
 }
 
-/**
- * 获取订单列表
- */
+// 获取订单列表
 func (orderService *orderService) GetOrderList(offset, limit int) []model.OrderDetail {
 
 	orderList := make([]model.OrderDetail, 0)
@@ -48,14 +40,11 @@ func (orderService *orderService) GetOrderList(offset, limit int) []model.OrderD
 	if err != nil {
 		iris.New().Logger().Error(err.Error())
 		panic(err.Error())
-		return nil
 	}
 	return orderList
 }
 
-/**
- * 获取订单总数量
- */
+// 获取订单总数量
 func (orderService *orderService) GetCount() (int64, error) {
 	count, err := orderService.Engine.Where(" del_flag = 0 ").Count(new(model.UserOrder))
 	if err != nil {

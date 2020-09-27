@@ -84,8 +84,6 @@ func main() {
 	/**
 	 * 2、自定义正则表达式变量路由请求 {unit64:uint64}进行变量类型限制
 	 */
-	// 123
-	// davie
 	app.Get("/api/users/{userid:uint64}", func(context context.Context) {
 		userID, err := context.Params().GetUint("userid")
 
@@ -281,7 +279,7 @@ func main() {
 		userName := context.PostValue("name")
 		passwd := context.PostValue("pwd")
 
-		if userName == "davie" && passwd == "pwd123" {
+		if userName == "Joey.1in" && passwd == "pwd123" {
 			session := sess.Start(context)
 
 			//用户名

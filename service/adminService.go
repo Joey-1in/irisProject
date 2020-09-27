@@ -37,7 +37,6 @@ func (ac *adminSevice) GetAdminCount() (int64, error) {
 
 	if err != nil {
 		panic(err.Error())
-		return 0, err
 	}
 
 	return count, nil
@@ -80,7 +79,6 @@ func (ac *adminSevice) GetAdminList(offset, limit int) []*model.Admin {
 	if err != nil {
 		iris.New().Logger().Error(err.Error())
 		panic(err.Error())
-		return nil
 	}
 	return adminList
 }

@@ -2,9 +2,7 @@ package model
 
 import "strconv"
 
-/**
- * 商店实体结构体定义
- */
+// 商店实体结构体定义
 type Shop struct {
 	ShopId                      int        `xorm:"pk autoincr" json:"item_id"`      //店铺Id
 	Name                        string     `xorm:"varchar(32)" json:"name"`         //店铺名称
@@ -36,9 +34,7 @@ type Shop struct {
 	Activities                  []*Service `xorm:"-"`                               //商家提供的服务 结构体
 }
 
-/**
- * 从数据库中查询出来的实体转变成前端所需要的json格式
- */
+// 从数据库中查询出来的实体转变成前端所需要的json格式
 func (this *Shop) ShopToRespDesc() interface{} {
 	respDesc := map[string]interface{}{
 		"id":               this.ShopId,

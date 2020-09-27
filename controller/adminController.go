@@ -10,9 +10,7 @@ import (
 	"github.com/kataras/iris/v12/sessions"
 )
 
-/**
- * 管理员控制器
- */
+// 管理员控制器
 type AdminController struct {
 	//iris框架自动为每个请求都绑定上下文对象
 	Ctx iris.Context
@@ -98,12 +96,6 @@ func (ac *AdminController) GetInfo() mvc.Result {
 			},
 		}
 	}
-
-	//解析数据到admin数据结构
-	//var admin = new(model.Admin)
-	//iris.New().Logger().Info(userByte)
-	//jsonStr := "" + userByte.(string) + ""
-	//admin = model.Decoder([]byte(jsonStr))
 
 	adminId, err := ac.Session.GetInt64(ADMIN)
 
@@ -229,9 +221,9 @@ func (ac *AdminController) GetAll() mvc.Result {
 	}
 
 	//做最大的限制
-	// if limit > MaxLimit {
-	// 	limit = MaxLimit
-	// }
+	if limit > MaxLimit {
+		limit = MaxLimit
+	}
 
 	adminList := ac.Service.GetAdminList(offset, limit)
 	if len(adminList) == 0 {

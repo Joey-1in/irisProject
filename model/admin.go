@@ -1,10 +1,10 @@
 package model
 
 import (
-	"time"
 	"bytes"
 	"encoding/gob"
 	"log"
+	"time"
 )
 
 //定义管理员结构体
@@ -21,9 +21,7 @@ type Admin struct {
 	City       *City     `xorm:"- <- ->"` //所对应的城市结构体（基础表结构体）
 }
 
-/**
- * 从Admin数据库实体转换为前端请求的resp的json格式
- */
+// 从Admin数据库实体转换为前端请求的resp的json格式
 func (this *Admin) AdminToRespDesc() interface{} {
 	respDesc := map[string]interface{}{
 		"user_name":   this.AdminName,
@@ -37,9 +35,7 @@ func (this *Admin) AdminToRespDesc() interface{} {
 	return respDesc
 }
 
-/**
- *  对象的序列化
- */
+// 对象的序列化
 func (admin *Admin) Encoder() []byte {
 	var buffer bytes.Buffer
 	encoder := gob.NewEncoder(&buffer) //创建编码器
@@ -50,9 +46,7 @@ func (admin *Admin) Encoder() []byte {
 	return buffer.Bytes()
 }
 
-/**
- * 对象的反序列化
- */
+// 对象的反序列化
 func Decoder(data []byte) *Admin {
 	decoder := gob.NewDecoder(bytes.NewReader(data)) //创建解密器
 	var admin *Admin

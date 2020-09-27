@@ -9,9 +9,7 @@ import (
 	"github.com/go-xorm/xorm"
 )
 
-/**
- * 统计功能模块接口标准
- */
+// 统计功能模块接口标准
 type StatisService interface {
 	//查询某一天的用户的增长数量
 	GetUserDailyCount(date string) int64
@@ -19,25 +17,19 @@ type StatisService interface {
 	GetAdminDailyCount(date string) int64
 }
 
-/**
- * 统计功能服务实现结构体
- */
+// 统计功能服务实现结构体
 type statisService struct {
 	Engine *xorm.Engine
 }
 
-/**
- * 新建统计模块功能服务对象
- */
+// 新建统计模块功能服务对象
 func NewStatisService(engine *xorm.Engine) StatisService {
 	return &statisService{
 		Engine: engine,
 	}
 }
 
-/**
- * 查询某一日管理员的增长数量
- */
+// 查询某一日管理员的增长数量
 func (ss *statisService) GetAdminDailyCount(date string) int64 {
 
 	if date == "NaN-NaN-NaN" { //当日增长数据请求
@@ -61,9 +53,7 @@ func (ss *statisService) GetAdminDailyCount(date string) int64 {
 	return int64(rand.Intn(100))
 }
 
-/**
- * 查询某一日订单的单日增长数量
- */
+// 查询某一日订单的单日增长数量
 func (ss *statisService) GetOrderDailyCount(date string) int64 {
 
 	if date == "NaN-NaN-NaN" { //当日增长数据请求
@@ -90,9 +80,7 @@ func (ss *statisService) GetOrderDailyCount(date string) int64 {
 	return int64(rand.Intn(100))
 }
 
-/**
- * 查询某一日用户的单日增长数量
- */
+// 查询某一日用户的单日增长数量
 func (ss *statisService) GetUserDailyCount(date string) int64 {
 
 	if date == "NaN-NaN-NaN" { //当日增长数据请求

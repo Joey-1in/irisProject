@@ -42,9 +42,9 @@ func mvcHandle(app *iris.Application) {
 	})
 
 	// //获取redis实例
-	// redis := datasource.NewRedis()
+	redis := datasource.NewRedis()
 	// //设置session的同步位置为redis
-	// sessManager.UseDatabase(redis)
+	sessManager.UseDatabase(redis)
 
 	//实例化mysql数据库引擎
 	engine := datasource.NewMysqlEngine()
@@ -59,6 +59,24 @@ func mvcHandle(app *iris.Application) {
 		sessManager.Start,
 	)
 	admin.Handle(new(controller.AdminController))
+
+	//统计功能模块
+	statisService := service.NewStatisService(engine)
+	statis := mvc.New(app.Party("/statis/{model}/{date}/"))
+	statis.Register(
+		statisService,
+		sessManager.Start,
+	)
+	statis.Handle(new(controller.StatisController))
+
+	//订单模块
+	orderService := service.NewOrderService(engine)
+	order := mvc.New(app.Party("/bos/orders/"))
+	order.Register(
+		orderService,
+		sessManager.Start,
+	)
+	order.Handle(new(controller.OrderController)) //控制器
 }
 
 // 项目配置

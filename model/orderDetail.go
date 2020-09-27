@@ -1,8 +1,6 @@
 package model
 
-/**
- * 用户订单详情结构体
- */
+// 用户订单详情结构体
 type OrderDetail struct {
 	UserOrder   `xorm:"extends"`
 	User        `xorm:"extends"`
@@ -10,7 +8,6 @@ type OrderDetail struct {
 	Shop        `xorm:"extends"`
 	Address     `xorm:"extends"`
 }
-
 
 func (detail *OrderDetail) OrderDetail2Resp() interface{} {
 	respDesc := map[string]interface{}{

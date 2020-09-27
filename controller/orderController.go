@@ -16,9 +16,7 @@ type OrderController struct {
 	Session *sessions.Session
 }
 
-/**
- * 获取订单列表
- */
+// 获取订单列表
 func (orderController *OrderController) Get() mvc.Result {
 
 	iris.New().Logger().Info(" 查询订单列表 ")
@@ -56,11 +54,6 @@ func (orderController *OrderController) Get() mvc.Result {
 		offset = 0
 	}
 
-	//做最大的限制
-	// if limit > MaxLimit {
-	// 	limit = MaxLimit
-	// }
-
 	orderList := orderController.Service.GetOrderList(offset, limit)
 
 	if len(orderList) == 0 {
@@ -86,9 +79,7 @@ func (orderController *OrderController) Get() mvc.Result {
 
 }
 
-/**
- * 查询订单记录总数
- */
+// 查询订单记录总数
 func (orderController *OrderController) GetCount() mvc.Result {
 	iris.New().Logger().Info(" 查询订单记录总数 ")
 	count, err := orderController.Service.GetCount()

@@ -1,8 +1,6 @@
 package model
 
-/**
- * 食品结构体定义
- */
+// 食品结构体定义
 type Food struct {
 	Id           int64         `xorm:"pk autoincr" json:"item_id"` //食品id
 	Name         string        `json:"name"`                       //食品名称

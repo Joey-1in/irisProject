@@ -9,9 +9,7 @@ import (
 	"github.com/kataras/iris/v12/mvc"
 )
 
-/**
- * 食品模块控制器
- */
+// 食品模块控制器
 type FoodController struct {
 	Ctx     iris.Context
 	Service service.FoodService

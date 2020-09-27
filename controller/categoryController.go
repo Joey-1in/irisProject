@@ -10,17 +10,13 @@ import (
 	"github.com/kataras/iris/v12/mvc"
 )
 
-/**
- * 食品种类控制器
- */
+// 食品种类控制器
 type CategoryController struct {
 	Ctx     iris.Context
 	Service service.CategoryService
 }
 
-/**
- * 添加食品种类实体
- */
+// 添加食品种类实体
 type CategoryEntity struct {
 	Name         string `json:"name"`
 	Description  string `json:"description"`
@@ -49,9 +45,7 @@ func (cc *CategoryController) BeforeActivation(a mvc.BeforeActivation) {
 
 }
 
-/**
- * 获取某个商铺的信息
- */
+// 获取某个商铺的信息
 func (cc *CategoryController) GetRestaurantInfo() mvc.Result {
 	shop_id := cc.Ctx.Params().Get("restaurant_id")
 
@@ -85,9 +79,7 @@ func (cc *CategoryController) GetRestaurantInfo() mvc.Result {
 
 }
 
-/**
- * 删除食品记录
- */
+// 删除食品记录
 func (cc *CategoryController) DeleteFood() mvc.Result {
 
 	food_id := cc.Ctx.Params().Get("food_id")
@@ -123,10 +115,7 @@ func (cc *CategoryController) DeleteFood() mvc.Result {
 	}
 }
 
-/**
- * 删除商户记录
- *
- */
+// 删除商户记录
 func (cc *CategoryController) DeleteRestaurant() mvc.Result {
 	restaurant_id := cc.Ctx.Params().Get("restaurant_id")
 
@@ -162,9 +151,7 @@ func (cc *CategoryController) DeleteRestaurant() mvc.Result {
 	}
 }
 
-/**
- * 即将添加的食品记录实体
- */
+// 即将添加的食品记录实体
 type AddFoodEntity struct {
 	Name         string   `json:"name"`          //食品名称
 	Description  string   `json:"description"`   //食品描述

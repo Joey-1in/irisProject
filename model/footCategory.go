@@ -1,8 +1,6 @@
 package model
 
-/**
- * 食品种类结构体定义
- */
+// 食品种类结构体定义
 type FoodCategory struct {
 	Id               int64  `xorm:"pk autoincr" json:"id"`      //食品的id
 	CategoryName     string `json:"name"`                       //食品种类名称

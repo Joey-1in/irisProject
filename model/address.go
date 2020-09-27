@@ -1,8 +1,6 @@
 package model
 
-/**
- * 地址结构实体
- */
+// 地址结构实体
 type Address struct {
 	AddressId     int64  `xorm:"pk autoincr" json:"id"`
 	Address       string `json:"address"`        //地址

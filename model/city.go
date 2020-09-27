@@ -1,8 +1,6 @@
 package model
 
-/*
- * 城市基础结构体字段(基础表)
- */
+// 城市基础结构体字段(基础表)
 type City struct {
 	CityId    int64   `xorm:"pk autoincr" json:"id"`       //主键
 	CityName  string  `xorm:"varchar(12)" json:"name"`     //城市名称
