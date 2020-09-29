@@ -1,2 +1,2 @@
 # irisProject
-Money management system
+资金管理系统
